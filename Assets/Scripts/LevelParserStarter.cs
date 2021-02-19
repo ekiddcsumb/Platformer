@@ -25,7 +25,7 @@ public class LevelParserStarter : MonoBehaviour
 
     private void FileParser()
     {
-        string fileToParse = string.Format("{0}{1}{2}.txt", Application.dataPath, "/Resources/Test", filename);
+        string fileToParse = string.Format("{0}{1}{2}.txt", Application.dataPath, "/Resources/", filename);
 
         using StreamReader sr = new StreamReader(fileToParse);
         string line = "";
@@ -38,9 +38,13 @@ public class LevelParserStarter : MonoBehaviour
             foreach (var letter in letters)
             {
                 //Call SpawnPrefab
-                SpawnPrefab(letter, Vector3.zero);
+                // Vector3 (update) - only x and y change, z stays at 0.
+                SpawnPrefab(letter, new Vector3(row, column, 0));
+                
+                column++;
             }
-
+            row++;
+            Debug.Log("Row: " + row + ", Column: " + column);
         }
 
         sr.Close();
@@ -49,22 +53,37 @@ public class LevelParserStarter : MonoBehaviour
     // character to be parsed, position where it needs to be spawned
     private void SpawnPrefab(char spot, Vector3 positionToSpawn)
     {
-        GameObject ToSpawn;
+        GameObject toSpawn;
 
         switch (spot)
         {
+            // if letter equals x or ? or b or s,
+            // instantiate the corresponding prefab.
+            
             // Make cases instantiate objects rather than logging
-            case 'b': Debug.Log("Spawn Brick"); break;
-            case '?': Debug.Log("Spawn QuestionBox"); break;
-            case 'x': Debug.Log("Spawn Rock"); break;
-            case 's': Debug.Log("Spawn Rock"); break;
+            case 'b':
+                toSpawn = Brick;
+                // Debug.Log("Spawn Brick"); 
+                break;
+            case '?':
+                toSpawn = QuestionBox;
+                // Debug.Log("Spawn QuestionBox"); 
+                break;
+            case 'x':
+                toSpawn = Rock;
+                // Debug.Log("Spawn Rock"); 
+                break;
+            case 's':
+                toSpawn = Stone;
+                // Debug.Log("Spawn Rock"); 
+                break;
             //default: Debug.Log("Default Entered"); break;
             default: return;
                 //ToSpawn = //Brick;       break;
         }
 
-        //ToSpawn = GameObject.Instantiate(ToSpawn, parentTransform);
-        //ToSpawn.transform.localPosition = positionToSpawn;
+        toSpawn = GameObject.Instantiate(toSpawn, parentTransform);
+        toSpawn.transform.localPosition = positionToSpawn;
     }
     
     public void RefreshParse()
