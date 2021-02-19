@@ -16,6 +16,9 @@ public class LevelParserStarter : MonoBehaviour
     public GameObject Stone;
 
     public Transform parentTransform;
+
+    private Stack<char[]> cs = new Stack<char[]>();
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -33,21 +36,27 @@ public class LevelParserStarter : MonoBehaviour
 
         while ((line = sr.ReadLine()) != null)
         {
-            int column = 0;
             char[] letters = line.ToCharArray();
-            foreach (var letter in letters)
-            {
-                //Call SpawnPrefab
-                // Vector3 (update) - only x and y change, z stays at 0.
-                SpawnPrefab(letter, new Vector3(row, column, 0));
-                
-                column++;
-            }
-            row++;
-            Debug.Log("Row: " + row + ", Column: " + column);
+            cs.Push(letters);
         }
 
         sr.Close();
+
+        while (cs.Count != 0)
+        {
+            int column = 0;
+            foreach (var letter in cs.Pop())
+            {
+                //Call SpawnPrefab
+                // Vector3 (update) - only x and y change, z stays at 0.
+                SpawnPrefab(letter, new Vector3(column, row, 0));
+                
+                ++column;
+                Debug.Log("Row: " + row + ", Column: " + column);
+            }
+            ++row;
+        }
+        
     }
 
     // character to be parsed, position where it needs to be spawned
