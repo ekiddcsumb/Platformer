@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/contentModel.xml
+/projectSettingsUpdater.xml
+/.idea.Platformer Part 1.iml
+/modules.xml
+# Datasource local storage ignored files
+/../../../../../../../../:\Programs\Unity\Projects\Platformer Part 1\.idea\.idea.Platformer Part 1\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
