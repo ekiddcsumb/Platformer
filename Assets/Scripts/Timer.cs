@@ -13,5 +13,9 @@ public class Timer : MonoBehaviour
         {
             timer -= Time.deltaTime;
         }
+        
+        int inttimer = (int)timer;
+
+        timerText.GetComponent<Text>().text = inttimer.ToString();
     }
 }
