@@ -52,7 +52,6 @@ public class LevelParserStarter : MonoBehaviour
                 SpawnPrefab(letter, new Vector3(column, row, 0));
                 
                 ++column;
-                Debug.Log("Row: " + row + ", Column: " + column);
             }
             ++row;
         }
