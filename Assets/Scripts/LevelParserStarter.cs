@@ -15,6 +15,10 @@ public class LevelParserStarter : MonoBehaviour
 
     public GameObject Stone;
 
+    public GameObject Lava;
+
+    public GameObject Goal;
+
     public Transform parentTransform;
 
     private Stack<char[]> cs = new Stack<char[]>();
@@ -84,6 +88,12 @@ public class LevelParserStarter : MonoBehaviour
             case 's':
                 toSpawn = Stone;
                 // Debug.Log("Spawn Rock"); 
+                break;
+            case 'l':
+                toSpawn = Lava;
+                break;
+            case 'g':
+                toSpawn = Goal;
                 break;
             //default: Debug.Log("Default Entered"); break;
             default: return;
