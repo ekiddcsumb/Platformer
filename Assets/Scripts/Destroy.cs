@@ -11,6 +11,9 @@ public class Destroy : MonoBehaviour
 
     public GameObject coinText;
     private int coinCount = 00;
+
+    public GameObject pointText;
+    private int pointCount = 0;
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -25,6 +28,7 @@ public class Destroy : MonoBehaviour
                 if (hitInfo.collider.name == "QuestionBlock(Clone)")
                 {
                     coinCount++;
+                    pointCount += 100;
 
                     if (coinCount < 10)
                     {
@@ -34,9 +38,10 @@ public class Destroy : MonoBehaviour
                     {
                         coinText.GetComponent<Text>().text = coinCount.ToString();
                     }
+
+                    pointText.GetComponent<Text>().text = pointCount.ToString();
                 }
             }
-            Debug.Log(coinCount);
         }
     }
 }
