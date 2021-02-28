@@ -29,15 +29,15 @@ public class EthanCharacter : MonoBehaviour
     //horizontal = speed;
 
     //Set character rotation
-    float x = (horizontal < 0) ? 180 : 0;
-    Quaternion newRotation = Quaternion.Euler(x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+    float y = (horizontal > 0) ? -90 : 90;
+    Quaternion newRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, y, transform.rotation.eulerAngles.z);
     transform.rotation = newRotation;
 
     //Set character animation
     animator.SetFloat("Speed", Mathf.Abs(horizontal));
 
     //move character
-    transform.Translate(transform.forward * horizontal * modifier * Time.deltaTime);
+    transform.Translate(transform.right * horizontal * modifier * Time.deltaTime);
     
   }
 
