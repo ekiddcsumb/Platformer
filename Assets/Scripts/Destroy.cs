@@ -16,31 +16,29 @@ public class Destroy : MonoBehaviour
     private int pointCount = 0;
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        RaycastHit hitInfo;
+        Ray ray = new Ray(transform.position, Vector3.up);
+
+        if (Physics.Raycast(ray, out hitInfo, distance, layermask))
         {
-            RaycastHit hitInfo;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out hitInfo, distance, layermask))
+            if (hitInfo.collider.name != "Rock(Clone)" && hitInfo.collider.name != "Stone(Clone)"
+            && hitInfo.collider.name != "Lava(Clone)" && hitInfo.collider.name != "Goal(Clone)")
             {
-                if (hitInfo.collider.name != "Rock(Clone)" && hitInfo.collider.name != "Stone(Clone)"
-                && hitInfo.collider.name != "Lava(Clone)" && hitInfo.collider.name != "Goal(Clone)")
+                Destroy(hitInfo.transform.gameObject);
+
+                if (hitInfo.transform.name == "QuestionBlock(Clone)")
                 {
-                    Destroy(hitInfo.transform.gameObject);
+                    coinCount++;
+                    pointCount += 100;
+                }
 
-                    if (hitInfo.collider.name == "QuestionBlock(Clone)")
-                    {
-                        coinCount++;
-                        pointCount += 100;
-                    }
-
-                    if (hitInfo.collider.name == "Brick(Clone)")
-                    {
-                        pointCount += 100;
-                    }
+                if (hitInfo.transform.name == "Brick(Clone)")
+                {
+                    pointCount += 100;
                 }
             }
         }
+        
         
         if (coinCount < 10)
         {

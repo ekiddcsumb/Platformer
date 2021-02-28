@@ -1114,7 +1114,6 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
-  - component: {fileID: 963194230}
   - component: {fileID: 963194231}
   m_Layer: 0
   m_Name: Main Camera
@@ -1220,24 +1219,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!114 &963194230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d30798fc1e38949478e1f8c6580ca726, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distance: 50
-  layermask:
-    serializedVersion: 2
-    m_Bits: 1
-  coinText: {fileID: 1521246962}
-  pointText: {fileID: 2029561379}
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1555,6 +1536,24 @@ CapsuleCollider:
   m_Height: 1.57
   m_Direction: 1
   m_Center: {x: 0.00028886786, y: -0.022289306, z: 0.013370334}
+--- !u!114 &1666580808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666580804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d30798fc1e38949478e1f8c6580ca726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 1.5
+  layermask:
+    serializedVersion: 2
+    m_Bits: 1
+  coinText: {fileID: 1521246962}
+  pointText: {fileID: 2029561379}
 --- !u!1 &1937051738
 GameObject:
   m_ObjectHideFlags: 0
