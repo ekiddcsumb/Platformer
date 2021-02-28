@@ -12,6 +12,7 @@ public class EthanCharacter : MonoBehaviour
   public float jumpForce = 1;
   [Range(-2, 2)] public float speed = 0;
   private bool jump = false;
+  private bool turbo = false;
 
 
   void Awake()
@@ -23,6 +24,7 @@ public class EthanCharacter : MonoBehaviour
   {
     float horizontal = Input.GetAxis("Horizontal");
     jump = (Input.GetKeyDown(KeyCode.Space)) ? true : false;
+    turbo = (Input.GetKeyDown(KeyCode.LeftShift)) ? true : false;
 
     //horizontal = speed;
 
@@ -42,5 +44,6 @@ public class EthanCharacter : MonoBehaviour
   void FixedUpdate()
   {
     if (jump) rb.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
+    if (turbo) modifier *= 2;
   }
 }
