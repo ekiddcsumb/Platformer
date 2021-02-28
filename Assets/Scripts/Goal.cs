@@ -1,25 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Goal : MonoBehaviour
 {
-    public GameObject timer;
+    // public Text timer;
+
+    // public Collision character;
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
-    // private void OnCollisionEnter(Collision other)
+    // void Update()
     // {
-    //     if (timer > 0 && other.gameObject.name == "Goal")
-    //     {
-    //         Debug.Log("You win!");
-    //     }
-    //     else
-    //     {
-    //         Debug.Log("You failed :(");
-    //     }
+    //     OnCollisionEnter(character);
     // }
+    
+    private void OnCollisionEnter(Collision other)
+    {
+        Debug.Log("You win!");
+    }
 }

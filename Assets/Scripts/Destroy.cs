@@ -15,7 +15,7 @@ public class Destroy : MonoBehaviour
     public GameObject pointText;
     private int pointCount = 0;
 
-    public GameObject timerText;
+    public Text timerText;
     void Update()
     {
         RaycastHit hitInfo;
@@ -39,6 +39,15 @@ public class Destroy : MonoBehaviour
                     pointCount += 100;
                 }
             }
+
+            // if (hitInfo.collider.name == "Goal(Clone)" && !timerText.Equals("0"))
+            // {
+            //     Debug.Log("You win!");
+            // }
+            // else if (timerText.Equals("0"))
+            // {
+            //     Debug.Log("You lose :(");
+            // }
         }
         
         

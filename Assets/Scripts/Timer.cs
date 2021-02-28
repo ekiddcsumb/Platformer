@@ -14,21 +14,25 @@ public class Timer : MonoBehaviour
         {
             timer -= Time.deltaTime;
         }
+        else
+        {
+            Debug.Log("You failed :(");
+        }
         
         int inttimer = (int)timer;
 
         timerText.GetComponent<Text>().text = inttimer.ToString();
     }
-    private void OnCollisionEnter(Collision other)
-    {
-        if (timer > 0 && other.gameObject.name == "Goal")
-        {
-            Debug.Log("You win!");
-        }
-        else
-        {
-            Debug.Log("You failed :(");
-        }
-    }
+    // private void OnCollisionEnter(Collision other)
+    // {
+    //     if (timer > 0 && other.gameObject.name == "Goal")
+    //     {
+    //         Debug.Log("You win!");
+    //     }
+    //     else
+    //     {
+    //         Debug.Log("You failed :(");
+    //     }
+    // }
     
 }
