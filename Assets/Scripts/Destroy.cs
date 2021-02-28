@@ -23,25 +23,33 @@ public class Destroy : MonoBehaviour
 
             if (Physics.Raycast(ray, out hitInfo, distance, layermask))
             {
-                Destroy(hitInfo.transform.gameObject);
-
-                if (hitInfo.collider.name == "QuestionBlock(Clone)")
+                if (hitInfo.collider.name != "Rock(Clone)" && hitInfo.collider.name != "Stone(Clone)"
+                && hitInfo.collider.name != "Lava(Clone)" && hitInfo.collider.name != "Goal(Clone)")
                 {
-                    coinCount++;
-                    pointCount += 100;
+                    Destroy(hitInfo.transform.gameObject);
 
-                    if (coinCount < 10)
+                    if (hitInfo.collider.name == "QuestionBlock(Clone)")
                     {
-                        coinText.GetComponent<Text>().text = "0" + coinCount;
-                    }
-                    else
-                    {
-                        coinText.GetComponent<Text>().text = coinCount.ToString();
+                        coinCount++;
+                        pointCount += 100;
                     }
 
-                    pointText.GetComponent<Text>().text = pointCount.ToString();
+                    if (hitInfo.collider.name == "Brick(Clone)")
+                    {
+                        pointCount += 100;
+                    }
                 }
             }
         }
+        
+        if (coinCount < 10)
+        {
+            coinText.GetComponent<Text>().text = "0" + coinCount;
+        }
+        else
+        {
+            coinText.GetComponent<Text>().text = coinCount.ToString();
+        }
+        pointText.GetComponent<Text>().text = pointCount.ToString();
     }
 }
