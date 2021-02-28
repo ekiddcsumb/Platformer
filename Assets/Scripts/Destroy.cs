@@ -14,6 +14,8 @@ public class Destroy : MonoBehaviour
 
     public GameObject pointText;
     private int pointCount = 0;
+
+    public GameObject timerText;
     void Update()
     {
         RaycastHit hitInfo;
